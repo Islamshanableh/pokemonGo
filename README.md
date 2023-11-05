@@ -29,12 +29,6 @@ docker-compose up
 
 ````
 
-info: prisma generated
-info: create prisma database
-info: insert data from xlsx
-info: 'Pokemon' is running on 0.0.0.0:8080
-
-
 
 ## File Structure and Request Process
 ````

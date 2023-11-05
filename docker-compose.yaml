@@ -1,0 +1,40 @@
+version: '3'
+services:
+  pokemongodb:
+    image: mysql:latest
+    container_name: pokemongodb
+    hostname: pokemongodb
+    cap_add:
+      - SYS_NICE
+    volumes:
+      - ../data/db:/var/lib/mysql
+    environment:
+      - MYSQL_ROOT_PASSWORD=Thisis@dmin
+      - MYSQL_DATABASE=pokemongodb
+    ports:
+      - 3308:3306
+  adminer:
+    image: adminer
+    restart: always
+    ports:
+      - 8081:8080
+
+  pokemongo:
+    build:
+      context: .
+    container_name: pokemongo
+    hostname: pokemongo
+    depends_on:
+      - pokemongodb
+    ports:
+      - 8080:8080
+    environment:
+      - PORT=8080
+      - APP_NAME='Pokemon'
+      - HOST=0.0.0.0
+      - DATABASE_URL=mysql://root:Thisis@dmin@pokemongodb:3306/pokemongodb?schema=public
+volumes:
+  db_data: {}
+networks:
+  default:
+    driver: bridge

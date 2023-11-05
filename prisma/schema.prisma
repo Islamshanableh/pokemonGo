@@ -1,0 +1,65 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "mysql"
+  url      = env("DATABASE_URL")
+}
+
+model Pokemon {
+  id             Int             @id @default(autoincrement())
+  name           String
+  pokedexNumber  Int             @unique
+  imgName        String?
+  generation     Int?
+  evolutionStage String?
+  evolved        Int?
+  familyID       Int?
+  crossGen       Int?
+  type1          PokemonTypes?
+  type2          PokemonTypes?
+  weather1       String?
+  weather2       String?
+  statTotal      Int?
+  ATK            Int?
+  DEF            Int?
+  STA            Int?
+  legendary      Int?
+  aquireable     Int?
+  spawns         Int?
+  regional       Int?
+  raidable       Int?
+  hatchable      Int?
+  shiny          Int?
+  nest           Int?
+  new            Int?
+  notGettable    Int?
+  futureEvolve   Int?
+  CP40           Int?
+  CP39           Int?
+  isActive       Boolean         @default(true)
+  createdAt      DateTime        @default(now())
+  updatedAt      DateTime        @updatedAt
+}
+
+enum PokemonTypes {
+  bug
+  dark
+  dragon
+  electric
+  fairy
+  fighting
+  fire
+  flying
+  ghost
+  grass
+  ground
+  ice
+  normal
+  poison
+  psychic
+  rock
+  steel
+  water
+}

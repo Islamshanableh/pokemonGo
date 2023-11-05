@@ -26,19 +26,17 @@ To clone the service repository, follow these steps "make sure you have access t
 ````shell
 ​
 docker-compose up
+
 ````
 
-​
 info: prisma generated
 info: create prisma database
 info: insert data from xlsx
 info: 'Pokemon' is running on 0.0.0.0:8080
 
 
-````
 
 ## File Structure and Request Process
-
 ````
 ├── app.js
 ├── src // the source directory
